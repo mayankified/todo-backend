@@ -33,7 +33,7 @@ export const login = async (req, res) => {
       return handleError(res, 400, "Account doesn't exist");
     }
 
-    const isMatch = bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return handleError(res, 400, "Incorrect Credentials");
